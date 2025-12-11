@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TodoList from "./components/TodoList";
+import TodoPage from "./components/TodoPage";
 import CalendarPage from "./components/CalendarPage";
 import "./styles.css";
 
@@ -42,7 +42,7 @@ function App() {
                 }}
             >
                 {activeTab === "todo" ? (
-                    <TodoList todos={todos} setTodos={setTodos} />
+                    <TodoPage todos={todos} setTodos={setTodos} />
                 ) : (
                     <CalendarPage todos={todos} />
                 )}

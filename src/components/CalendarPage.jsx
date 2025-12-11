@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 
-function CalendarPage({ todos }) {
+export default function CalendarPage({ todos }) {
     const [holidayEvents, setHolidayEvents] = useState([]);
     const [loadedHolidayYears, setLoadedHolidayYears] = useState([]);
 
@@ -84,5 +84,3 @@ function CalendarPage({ todos }) {
         </div>
     );
 }
-
-export default CalendarPage;

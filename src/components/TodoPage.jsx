@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function TodoList({ todos, setTodos }) {
+export default function TodoPage({ todos, setTodos }) {
     const [input, setInput] = useState("");
     const [date, setDate] = useState("");
     const [showDateInput, setShowDateInput] = useState(false);
@@ -45,20 +45,11 @@ export default function TodoList({ todos, setTodos }) {
                         onChange={(e) => setDate(e.target.value)}
                     />
 
-                    <span
-                        id="date-error"
-                        className={
-                            date || !showDateInput
-                                ? "error-message hidden"
-                                : "error-message"
-                        }
-                    >
-                        Input is invalid.
-                    </span>
-
                     <button
                         type="button"
-                        className="add-to-do"
+                        className={
+                            showDateInput ? "add-to-do hidden" : "add-to-do"
+                        }
                         disabled={!input.trim()}
                         onClick={handleAddTodo}
                     >
