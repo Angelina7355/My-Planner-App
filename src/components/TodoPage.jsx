@@ -30,13 +30,15 @@ export default function TodoPage({ todos, setTodos }) {
                         onChange={(e) => setInput(e.target.value)}
                     />
 
-                    <button
-                        type="button"
-                        className="add-to-calendar"
-                        onClick={() => setShowDateInput(!showDateInput)}
-                    >
-                        {showDateInput ? "change date" : "add date"}
-                    </button>
+                    {!showDateInput && (
+                        <button
+                            type="button"
+                            className="add-to-calendar"
+                            onClick={() => setShowDateInput(!showDateInput)}
+                        >
+                            {date ? "change date" : "add date"}
+                        </button>
+                    )}
 
                     <input
                         id="date-input"
@@ -83,12 +85,6 @@ export default function TodoPage({ todos, setTodos }) {
 
                 <hr />
 
-                {/* {todos.map((todo, index) => (
-                    <li className="to-do" key={index}>
-                        <span>{todo.text}</span>
-                        {todo.date && <p>{todo.date}</p>}
-                    </li>
-                ))} */}
                 {todos.map((todo, index) => (
                     <TodoItem key={index} todo={todo} />
                 ))}
