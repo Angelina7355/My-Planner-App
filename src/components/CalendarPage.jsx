@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 
-export default function CalendarPage({ todos }) {
+export default function CalendarPage({ todos, assignments = [] }) {
     const [holidayEvents, setHolidayEvents] = useState([]);
     const [loadedHolidayYears, setLoadedHolidayYears] = useState([]);
 
+    // Add events to calendar
     const todoEvents = todos
         .filter((todo) => todo.date)
         .map((todo) => ({
@@ -14,6 +15,16 @@ export default function CalendarPage({ todos }) {
             allDay: true,
             color: "#97acc4",
         }));
+
+    // Add assignments to calendar
+    const assignmentEvents = assignments.map((assignment) => ({
+        title: assignment.name,
+        start: assignment.posted,
+        end: assignment.due,
+        allDay: true,
+        color: "#f9c74f",
+        display: "background",
+    }));
 
     const fetchHolidayAPI = (year) => {
         if (loadedHolidayYears.includes(year)) return;
@@ -75,7 +86,7 @@ export default function CalendarPage({ todos }) {
             <FullCalendar
                 plugins={[dayGridPlugin]}
                 initialView="dayGridMonth"
-                events={[...todoEvents, ...holidayEvents]}
+                events={[...todoEvents, ...assignmentEvents, ...holidayEvents]}
                 datesSet={(info) => {
                     const year = info.view.currentStart.getFullYear();
                     fetchHolidayAPI(year);

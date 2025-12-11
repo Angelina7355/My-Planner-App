@@ -4,6 +4,7 @@
     --off-white: #faf1e8;
     --tan: #e0d2c3;
     --to-do-background: #97acc4;
+    --assignment-background: #97c4b6;
     --calendar-background: #dc9d93;
     --to-do-text: #3c4750;
     --to-do-date-text: #5d6d7b;
@@ -69,6 +70,11 @@ button.tab {
     border-color: var(--to-do-background);
 }
 
+#assignment-tab {
+    background-color: var(--assignment-background);
+    border-color: var(--assignment-background);
+}
+
 #calendar-tab {
     background-color: var(--calendar-background);
     border-color: var(--calendar-background);
@@ -119,6 +125,7 @@ hr {
 }
 
 #to-do-page,
+#assignment-page,
 #calendar-page {
     background-color: var(--tan);
     width: 100%;
