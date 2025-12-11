@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+
+:root {
+    --off-white: #faf1e8;
+    --tan: #e0d2c3;
+    --to-do-background: #97acc4;
+    --calendar-background: #dc9d93;
+    --to-do-text: #3c4750;
+    --to-do-date-text: #5d6d7b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Handlee", cursive;
+}
+
+header {
+    font-size: 1.2rem;
+    padding: 1rem 4rem 0 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--off-white);
+    overflow: hidden;
+    box-shadow: 0px -8px 10px 1px rgba(0, 0, 0, 0.3) inset;
+}
+
+h1,
+h2,
+#count {
+    color: black;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2.4rem;
+}
+
+h2 {
+    color: black;
+    font-size: 1.5rem;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 3rem;
+}
+
+a.tab {
+    text-decoration: none;
+    color: black;
+    padding: 0.5em 2em;
+    border-radius: 10% 10% 0 0;
+    z-index: 1;
+    /* box-shadow: offset-x offset-y blur-radius spread-radius color */
+    box-shadow:
+        0px -8px 10px 1px rgba(0, 0, 0, 0.2),
+        /* top */ -8px 0px 10px 1px rgba(0, 0, 0, 0.2),
+        /* left */ 8px 0px 10px 1px rgba(0, 0, 0, 0.2); /* right */
+}
+
+#to-do-tab {
+    background-color: var(--to-do-background);
+}
+
+#calendar-tab {
+    background-color: var(--calendar-background);
+}
+
+main {
+    background-color: var(--to-do-background);
+    padding: 3rem 10rem;
+    z-index: 2;
+}
+
+input,
+textarea {
+    background: none;
+    border: none;
+    font-size: 1em;
+    color: var(--to-do-text);
+    line-height: 2em;
+    outline: none;
+}
+
+li {
+    font-size: 1.5em;
+    color: var(--to-do-text);
+    line-height: 2em;
+}
+
+li.to-do {
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 1.5em;
+    color: var(--to-do-text);
+    line-height: 2em;
+    list-style-type: disc;
+}
+
+li p {
+    font-size: 0.5em;
+    color: var(--to-do-date-text);
+}
+
+hr {
+    border: none;
+    height: 2px; /* Sets the thickness of the line */
+    background-color: var(--to-do-text);
+}
+
+#to-do-page,
+#calendar-page {
+    background-color: var(--tan);
+    width: 100%;
+    height: 100%;
+    border-radius: 3%;
+    padding: 2rem;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.2);
+}
+
+#to-do-page {
+    height: 100dvh;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    padding: 0.5rem;
+    border-radius: 10%;
+    margin-bottom: 0.5rem;
+    background-color: var(--off-white);
+    color: black;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    border: solid 2px var(--to-do-background);
+}
+
+button.add-to-do {
+    background-color: var(--off-white);
+    border: solid 2px var(--to-do-background);
+    transition-duration: 0.3s;
+}
+
+button.add-to-do:hover {
+    background-color: var(--to-do-background);
+    color: var(--off-white);
+}
+
+button.add-to-calendar,
+button.confirm-date,
+button.cancel {
+    background-color: var(--off-white);
+    border: solid 2px var(--calendar-background);
+    transition-duration: 0.3s;
+}
+
+button.add-to-calendar:hover,
+button.confirm-date:hover,
+button.cancel:hover {
+    background-color: var(--calendar-background);
+    color: var(--off-white);
+}
+
+h2 {
+    text-decoration: underline;
+    display: flex;
+    justify-content: center;
+}
+#date-input {
+    background-color: var(--off-white);
+}
+
+button:disabled,
+button:disabled:hover {
+    cursor: not-allowed;
+    background-color: lightgrey;
+    border: solid 2px lightgrey;
+    color: grey;
+}
+
+#count {
+    display: flex;
+    justify-content: flex-end;
+}
