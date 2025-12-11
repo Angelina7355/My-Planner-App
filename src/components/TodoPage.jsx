@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TodoItem from "./TodoItem";
 
 export default function TodoPage({ todos, setTodos }) {
     const [input, setInput] = useState("");
@@ -82,11 +83,14 @@ export default function TodoPage({ todos, setTodos }) {
 
                 <hr />
 
-                {todos.map((todo, index) => (
+                {/* {todos.map((todo, index) => (
                     <li className="to-do" key={index}>
                         <span>{todo.text}</span>
                         {todo.date && <p>{todo.date}</p>}
                     </li>
+                ))} */}
+                {todos.map((todo, index) => (
+                    <TodoItem key={index} todo={todo} />
                 ))}
             </ul>
         </div>
