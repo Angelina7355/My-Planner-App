@@ -8,7 +8,7 @@ function App() {
     const [todos, setTodos] = useState([]);
 
     return (
-        <div>
+        <>
             <header>
                 <span id="title">
                     <h1>My Planner</h1>
@@ -42,16 +42,12 @@ function App() {
                 }}
             >
                 {activeTab === "todo" ? (
-                    <div id="to-do-page">
-                        <TodoList todos={todos} setTodos={setTodos} />
-                    </div>
+                    <TodoList todos={todos} setTodos={setTodos} />
                 ) : (
-                    <div id="calendar-page">
-                        <CalendarPage todos={todos} />
-                    </div>
+                    <CalendarPage todos={todos} />
                 )}
             </main>
-        </div>
+        </>
     );
 }
 

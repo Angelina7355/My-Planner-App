@@ -15,7 +15,7 @@ export default function TodoList({ todos, setTodos }) {
     };
 
     return (
-        <>
+        <div id="to-do-page">
             <h2>To-Do List</h2>
             <p id="count">To-Do Count: {todos.length}</p>
 
@@ -98,7 +98,6 @@ export default function TodoList({ todos, setTodos }) {
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     );
 }
-
