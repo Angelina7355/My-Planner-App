@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
 
 :root {
-    --off-white: #faf1e8;
+    --off-white: #f9efe6;
+    --light-tan: #f0e4d8;
     --tan: #e0d2c3;
     --to-do-background: #97acc4;
     --assignment-background: #97c4b6;
@@ -94,6 +95,7 @@ textarea {
     color: var(--to-do-text);
     line-height: 2em;
     outline: none;
+    padding-right: 5em;
 }
 
 li {
@@ -108,7 +110,6 @@ li.to-do {
     line-height: 1em;
     margin-top: 1em;
     margin-bottom: 0.2em;
-
 }
 
 li.to-do p {
@@ -135,7 +136,8 @@ hr {
     box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.2);
 }
 
-#to-do-page {
+#to-do-page,
+#assignment-page {
     height: 100dvh;
 }
 
@@ -143,7 +145,8 @@ hr {
     display: none;
 }
 
-button {
+button,
+select {
     padding: 0.5rem;
     border-radius: 10%;
     margin-bottom: 0.5rem;
@@ -152,11 +155,28 @@ button {
     transition-duration: 0.3s;
     cursor: pointer;
     border: solid 2px var(--to-do-background);
+    margin: 0.5rem 0.5rem 0.5rem 0;
 }
 
 button.add-to-do {
     background-color: var(--off-white);
     border: solid 2px var(--to-do-background);
+    transition-duration: 0.3s;
+}
+
+#course-list-button,
+.assignment,
+button.assignment-btn {
+    background-color: var(--off-white);
+    border: solid 2px var(--assignment-background);
+    transition-duration: 0.3s;
+}
+
+#course-list-button:hover,
+.assignment:hover,
+button.assignment-btn:hover {
+    background-color: var(--assignment-background);
+    color: var(--off-white);
     transition-duration: 0.3s;
 }
 
@@ -167,7 +187,8 @@ button.add-to-do:hover {
 
 button.add-to-calendar,
 button.confirm-date,
-button.cancel {
+button.cancel,
+button.add-assignment {
     background-color: var(--off-white);
     border: solid 2px var(--calendar-background);
     transition-duration: 0.3s;
@@ -175,7 +196,8 @@ button.cancel {
 
 button.add-to-calendar:hover,
 button.confirm-date:hover,
-button.cancel:hover {
+button.cancel:hover,
+button.add-assignment:hover {
     background-color: var(--calendar-background);
     color: var(--off-white);
 }
@@ -185,8 +207,17 @@ h2 {
     display: flex;
     justify-content: center;
 }
-#date-input {
-    background-color: var(--off-white);
+/* #date-input {
+    border-color: black;
+    border-radius: 5%;
+} */
+
+input[type="date"] {
+    width: 8em;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0.2em 1.3em 0em 0em; /* top right bottom left */
+    margin: 0.5em;
 }
 
 button:disabled,
@@ -197,9 +228,19 @@ button:disabled:hover {
     color: grey;
 }
 
-#count {
+#count,
+#course-list-button {
     display: flex;
     justify-content: flex-end;
+}
+
+.course-list-section {
+    background-color: var(--light-tan); /* light cream */
+    border: 2px solid var(--assignment-background); /* assignment tab color */
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(60, 71, 80, 0.08);
+    padding: 1em;
+    margin: 1em 0;
 }
 
 input:-webkit-autofill,

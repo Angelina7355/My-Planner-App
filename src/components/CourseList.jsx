@@ -16,7 +16,7 @@ export default function CourseList({ courses, setCourses }) {
     };
 
     return (
-        <div>
+        <div class="course-list-section">
             <h3>Courses</h3>
             <input
                 type="text"
@@ -25,12 +25,19 @@ export default function CourseList({ courses, setCourses }) {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleAddCourse()}
             />
-            <button onClick={handleAddCourse}>Add</button>
+            <button
+                class="assignment-btn"
+                disabled={!input.trim()}
+                onClick={handleAddCourse}
+            >
+                Add
+            </button>
             <ul>
                 {courses.map((course, idx) => (
                     <li key={idx}>
                         {course}
                         <button
+                            class="assignment-btn"
                             onClick={() => handleRemoveCourse(course)}
                             style={{ marginLeft: "1em" }}
                         >

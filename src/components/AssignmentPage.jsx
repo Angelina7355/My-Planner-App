@@ -20,7 +20,12 @@ export default function AssignmentPage({ assignments, setAssignments }) {
     return (
         <div id="assignment-page">
             <h2>Assignments</h2>
-            <button onClick={() => setShowCourseList(!showCourseList)}>
+            <p id="count">Assignment Count: {assignments.length}</p>
+
+            <button
+                id="course-list-button"
+                onClick={() => setShowCourseList(!showCourseList)}
+            >
                 {showCourseList ? "Hide Courses" : "View Courses"}
             </button>
 
@@ -29,15 +34,17 @@ export default function AssignmentPage({ assignments, setAssignments }) {
             )}
 
             <input
-                placeholder="Assignment Name"
+                placeholder="Add assignment here"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
             />
+            <span>Date Assigned:</span>
             <input
                 type="date"
                 value={posted}
                 onChange={(e) => setPosted(e.target.value)}
             />
+            <span>Due:</span>
             <input
                 type="date"
                 value={due}
@@ -45,6 +52,7 @@ export default function AssignmentPage({ assignments, setAssignments }) {
             />
 
             <select
+                class="assignment"
                 value={selectedCourse}
                 onChange={(e) => setSelectedCourse(e.target.value)}
             >
@@ -56,12 +64,22 @@ export default function AssignmentPage({ assignments, setAssignments }) {
                 ))}
             </select>
 
-            <button onClick={handleAssignmentAdd}>Add Assignment</button>
+            <button
+                class="add-assignment"
+                disabled={!name.trim()}
+                onClick={handleAssignmentAdd}
+            >
+                Add Assignment
+            </button>
+            <hr />
             <ul>
                 {assignments.map((a, i) => (
-                    <li key={i}>
-                        {a.name}: {a.posted} → {a.due}
-                    </li>
+                    <>
+                        <li key={i}>
+                            {a.name}: {a.posted} → {a.due}
+                        </li>
+                        <hr />
+                    </>
                 ))}
             </ul>
         </div>
