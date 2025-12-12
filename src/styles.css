@@ -117,16 +117,23 @@ li.items {
     line-height: 1em;
 }
 
+li.to-do {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.to-do-info {
+    gap: 1em; /* Adjust as needed */
+    flex-direction: column;
+}
+
 li.to-do p,
 p.date {
     display: flex;
-    align-items: end;
-    margin-bottom: 0.7em;
-    margin-left: 1.2em;
     font-size: 0.5em;
     color: var(--to-do-date-text);
     line-height: 1;
-    margin-top: 0.4em;
 }
 
 button.edit-todo-btn {

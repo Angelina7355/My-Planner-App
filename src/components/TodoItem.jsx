@@ -19,16 +19,18 @@ export default function TodoItem({ todo, onEdit }) {
     if (editing) {
         return (
             <li className="to-do editing">
-                <input
-                    type="text"
-                    value={editText}
-                    onChange={(e) => setEditText(e.target.value)}
-                />
-                <input
-                    type="date"
-                    value={editDate}
-                    onChange={(e) => setEditDate(e.target.value)}
-                />
+                <div className="to-do-info">
+                    <input
+                        type="text"
+                        value={editText}
+                        onChange={(e) => setEditText(e.target.value)}
+                    />
+                    <input
+                        type="date"
+                        value={editDate}
+                        onChange={(e) => setEditDate(e.target.value)}
+                    />
+                </div>
                 <button onClick={handleSave}>Save</button>
                 <button onClick={() => setEditing(false)}>Cancel</button>
             </li>
@@ -38,8 +40,14 @@ export default function TodoItem({ todo, onEdit }) {
     return (
         <>
             <li className="to-do">
-                <span>{todo.text}</span>
-                {todo.date ? <p>{formatDate(todo.date)}</p> : <p>{"\u00A0"}</p>}
+                <div className="to-do-info">
+                    <span>{todo.text}</span>
+                    {todo.date ? (
+                        <p>{formatDate(todo.date)}</p>
+                    ) : (
+                        <p>{"\u00A0"}</p>
+                    )}
+                </div>
 
                 <button
                     className="edit-todo-btn"
