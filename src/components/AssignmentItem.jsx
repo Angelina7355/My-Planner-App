@@ -38,29 +38,42 @@ export default function AssignmentItem({ assignment, courses, onEdit }) {
                         value={editName}
                         onChange={(e) => setEditName(e.target.value)}
                     />
-                    <input
-                        type="date"
-                        value={editPosted}
-                        onChange={(e) => setEditPosted(e.target.value)}
-                    />
-                    <input
-                        type="date"
-                        value={editDue}
-                        onChange={(e) => setEditDue(e.target.value)}
-                    />
-                    <select
-                        value={editCourse}
-                        onChange={(e) => setEditCourse(e.target.value)}
-                    >
-                        <option value="">Select Course</option>
-                        {courses.map((course, idx) => (
-                            <option key={idx} value={course.name}>
-                                {course.name}
+                    <div className="edit-btns-container">
+                        <input
+                            type="date"
+                            value={editPosted}
+                            onChange={(e) => setEditPosted(e.target.value)}
+                        />
+                        <input
+                            type="date"
+                            value={editDue}
+                            onChange={(e) => setEditDue(e.target.value)}
+                        />
+                        <select
+                            value={editCourse}
+                            onChange={(e) => setEditCourse(e.target.value)}
+                            className="assignment"
+                        >
+                            <option value="" className="assignment-btn">
+                                Select Course
                             </option>
-                        ))}
-                    </select>
-                    <button onClick={handleSave}>Save</button>
-                    <button onClick={() => setEditing(false)}>Cancel</button>
+                            {courses.map((course, idx) => (
+                                <option key={idx} value={course.name}>
+                                    {course.name}
+                                </option>
+                            ))}
+                        </select>
+
+                        <button onClick={handleSave} className="assignment-btn">
+                            Save
+                        </button>
+                        <button
+                            onClick={() => setEditing(false)}
+                            className="assignment-btn"
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </div>
             </li>
         );
@@ -90,7 +103,7 @@ export default function AssignmentItem({ assignment, courses, onEdit }) {
                 </div>
 
                 <button
-                    className="edit-assignment-btn"
+                    className="assignment-btn"
                     onClick={() => setEditing(true)}
                 >
                     Edit

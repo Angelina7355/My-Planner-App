@@ -109,12 +109,15 @@ li.to-do > span:first-child {
     margin-bottom: 0.2em;
 }
 
-li.to-do,
-li.items {
+li.to-do {
     display: flex;
     font-size: 1.5em;
     color: var(--to-do-text);
     line-height: 1em;
+}
+
+li.items {
+    font-size: 1.4em;
 }
 
 li.to-do {
@@ -172,6 +175,12 @@ li.to-do > .edit-todo-btn {
     gap: 1em; /* space between name and date */
 }
 
+.assignment-edit-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .assignment-edit-row input,
 .assignment-edit-row select {
     max-width: 100%;
@@ -179,10 +188,10 @@ li.to-do > .edit-todo-btn {
 }
 
 .assignment-edit-row input[type="date"] {
-    width: 10em; /* or larger, adjust as needed */
-    font-size: 0.9em; /* make text more readable */
-    margin-left: 0.5em;
-    padding-right: 2.5em; /* ensure space for the icon */
+    width: 8em; /* or larger, adjust as needed */
+    font-size: 0.7em; /* make text more readable */
+    margin-left: 0em;
+    padding-right: 0.8em; /* ensure space for the icon */
 }
 
 hr {

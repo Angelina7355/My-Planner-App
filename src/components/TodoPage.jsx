@@ -98,6 +98,9 @@ export default function TodoPage({ todos, setTodos }) {
                             };
                             setTodos(updated);
                         }}
+                        onDelete={() => {
+                            setTodos(todos.filter((_, i) => i !== index));
+                        }}
                     />
                 ))}
             </ul>

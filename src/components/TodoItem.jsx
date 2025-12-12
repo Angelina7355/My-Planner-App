@@ -6,7 +6,7 @@ function formatDate(dateStr) {
     return `${month}/${day}/${year}`;
 }
 
-export default function TodoItem({ todo, onEdit }) {
+export default function TodoItem({ todo, onEdit, onDelete }) {
     const [editing, setEditing] = useState(false);
     const [editText, setEditText] = useState(todo.text);
     const [editDate, setEditDate] = useState(todo.date || "");
@@ -25,14 +25,18 @@ export default function TodoItem({ todo, onEdit }) {
                         value={editText}
                         onChange={(e) => setEditText(e.target.value)}
                     />
+                </div>
+
+                <div className="edit-btns-container">
                     <input
                         type="date"
                         value={editDate}
                         onChange={(e) => setEditDate(e.target.value)}
                     />
+                    <button onClick={handleSave}>Save</button>
+                    <button onClick={() => setEditing(false)}>Cancel</button>
+                    <button onClick={onDelete}>Delete</button>
                 </div>
-                <button onClick={handleSave}>Save</button>
-                <button onClick={() => setEditing(false)}>Cancel</button>
             </li>
         );
     }
