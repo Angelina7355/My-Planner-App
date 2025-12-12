@@ -86,7 +86,19 @@ export default function TodoPage({ todos, setTodos }) {
                 <hr />
 
                 {todos.map((todo, index) => (
-                    <TodoItem key={index} todo={todo} />
+                    <TodoItem
+                        key={index}
+                        todo={todo}
+                        onEdit={(newText, newDate) => {
+                            const updated = [...todos];
+                            updated[index] = {
+                                ...todo,
+                                text: newText,
+                                date: newDate,
+                            };
+                            setTodos(updated);
+                        }}
+                    />
                 ))}
             </ul>
         </div>

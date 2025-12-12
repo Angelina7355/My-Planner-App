@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import CourseList from "./CourseList";
-
-function formatDate(dateStr) {
-    if (!dateStr) return "";
-    const [year, month, day] = dateStr.split("-");
-    return `${month}/${day}/${year}`;
-}
+import AssignmentItem from "./AssignmentItem";
 
 export default function AssignmentPage({
     assignments,
@@ -30,11 +25,6 @@ export default function AssignmentPage({
         setDue("");
         setSelectedCourse("");
     };
-
-    function getCourseColor(assignment) {
-        const courseObj = courses.find((c) => c.name === assignment.course);
-        return courseObj ? courseObj.color : undefined;
-    }
 
     return (
         <div id="assignment-page">
@@ -94,21 +84,16 @@ export default function AssignmentPage({
 
             <ul>
                 {assignments.map((a, i) => (
-                    <li className="items" key={i}>
-                        <p>
-                            {a.name}
-                            {a.course && (
-                                <span style={{ color: getCourseColor(a) }}>
-                                    {` (${a.course})`}
-                                </span>
-                            )}
-                            :
-                        </p>
-                        <p className="date">
-                            {formatDate(a.posted)} → {formatDate(a.due)}
-                        </p>
-                        <hr />
-                    </li>
+                    <AssignmentItem
+                        key={i}
+                        assignment={a}
+                        courses={courses}
+                        onEdit={(updatedAssignment) => {
+                            const updated = [...assignments];
+                            updated[i] = updatedAssignment;
+                            setAssignments(updated);
+                        }}
+                    />
                 ))}
             </ul>
         </div>
