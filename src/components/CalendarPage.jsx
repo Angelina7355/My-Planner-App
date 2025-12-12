@@ -22,7 +22,7 @@ export default function CalendarPage({ todos, assignments = [] }) {
         start: assignment.posted,
         end: assignment.due,
         allDay: true,
-        color: "#f9c74f",
+        color: "#97c4b6",
         display: "background",
     }));
 

@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import TodoPage from "./components/TodoPage";
 import AssignmentPage from "./components/AssignmentPage";
 import CalendarPage from "./components/CalendarPage";
+import HelpButton from "./components/HelpButton";
+
 import "./styles.css";
 
 function App() {
     const [activeTab, setActiveTab] = useState("todo");
     const [todos, setTodos] = useState([]);
     const [assignments, setAssignments] = useState([]);
+    const [courses, setCourses] = useState([]);
 
     const tabBackgrounds = {
         todo: "var(--to-do-background)",
@@ -63,6 +66,8 @@ function App() {
                     <AssignmentPage
                         assignments={assignments}
                         setAssignments={setAssignments}
+                        courses={courses}
+                        setCourses={setCourses}
                     />
                 )}
 
@@ -70,6 +75,7 @@ function App() {
                     <CalendarPage todos={todos} assignments={assignments} />
                 )}
             </main>
+            <HelpButton />
         </>
     );
 }

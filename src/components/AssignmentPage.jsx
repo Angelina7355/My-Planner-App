@@ -1,20 +1,34 @@
 import React, { useState } from "react";
 import CourseList from "./CourseList";
 
-export default function AssignmentPage({ assignments, setAssignments }) {
+function formatDate(dateStr) {
+    if (!dateStr) return "";
+    const [year, month, day] = dateStr.split("-");
+    return `${month}/${day}/${year}`;
+}
+
+export default function AssignmentPage({
+    assignments,
+    setAssignments,
+    courses,
+    setCourses,
+}) {
     const [name, setName] = useState("");
     const [posted, setPosted] = useState("");
     const [due, setDue] = useState("");
-    const [courses, setCourses] = useState([]);
     const [selectedCourse, setSelectedCourse] = useState("");
     const [showCourseList, setShowCourseList] = useState(false);
 
     const handleAssignmentAdd = () => {
         if (!name || !posted || !due) return;
-        setAssignments([...assignments, { name, posted, due }]);
+        setAssignments([
+            ...assignments,
+            { name, posted, due, course: selectedCourse },
+        ]);
         setName("");
         setPosted("");
         setDue("");
+        setSelectedCourse("");
     };
 
     return (
@@ -52,34 +66,39 @@ export default function AssignmentPage({ assignments, setAssignments }) {
             />
 
             <select
-                class="assignment"
+                className="assignment"
                 value={selectedCourse}
                 onChange={(e) => setSelectedCourse(e.target.value)}
             >
                 <option value="">Select Course</option>
                 {courses.map((course, idx) => (
-                    <option key={idx} value={course}>
-                        {course}
+                    <option key={idx} value={course.name}>
+                        {course.name}
                     </option>
                 ))}
             </select>
 
             <button
-                class="add-assignment"
-                disabled={!name.trim()}
+                className="add-assignment"
+                disabled={!name.trim() || !posted.trim() || !due.trim()}
                 onClick={handleAssignmentAdd}
             >
                 Add Assignment
             </button>
             <hr />
+
             <ul>
                 {assignments.map((a, i) => (
-                    <>
-                        <li key={i}>
-                            {a.name}: {a.posted} → {a.due}
-                        </li>
+                    <li className="items" key={i}>
+                        <p>
+                            {a.name}
+                            {a.course && ` (${a.course})`}:
+                        </p>
+                        <p className="date">
+                            {formatDate(a.posted)} → {formatDate(a.due)}
+                        </p>
                         <hr />
-                    </>
+                    </li>
                 ))}
             </ul>
         </div>

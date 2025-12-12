@@ -104,7 +104,7 @@ li {
     line-height: 2em;
 }
 
-li.to-do {
+li.to-do, li.items {
     font-size: 1.5em;
     color: var(--to-do-text);
     line-height: 1em;
@@ -112,7 +112,7 @@ li.to-do {
     margin-bottom: 0.2em;
 }
 
-li.to-do p {
+li.to-do p, p.date {
     font-size: 0.5em;
     color: var(--to-do-date-text);
     line-height: 1;
@@ -234,13 +234,122 @@ button:disabled:hover {
     justify-content: flex-end;
 }
 
+ul.course-list {
+    list-style: none;
+    padding: 0;
+}
+
 .course-list-section {
-    background-color: var(--light-tan); /* light cream */
-    border: 2px solid var(--assignment-background); /* assignment tab color */
+    background-color: var(--light-tan);
+    border: 2px solid var(--assignment-background);
     border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(60, 71, 80, 0.08);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
     padding: 1em;
     margin: 1em 0;
+    overflow: hidden;
+}
+
+.course-list-section ul {
+    padding-left: 1.5em;
+    margin-left: 0;
+}
+
+/* .course-input-row {
+    display: flex;
+    gap: 0.5em;
+    margin-bottom: 1em;
+} */
+
+/* .course-input {
+    flex: 1;
+    min-width: 8em;
+} */
+
+.course-color-picker {
+    width: 2em;
+    height: 2em;
+    min-width: 2em;
+    min-height: 2em;
+    border: 1px solid var(--light-tan);
+    border-radius: 10%;
+    background: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0;
+    margin-right: 0.5em;
+}
+
+.course-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.course-list-item {
+    display: flex;
+    align-items: center;
+    gap: 0em;
+    margin-bottom: 0.1em;
+    font-size: 1.2em;
+}
+
+.course-name {
+    flex: 1;
+}
+
+.help-button-container {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.help-button {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background: var(--light-tan);
+    color: var(--to-do-text);
+    font-size: 2em;
+    border: none;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.help-button:hover {
+    background: var(--tan);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.help-popup {
+    background: #fffbe8;
+    color: #3c4750;
+    border: 1px solid #e0d2c3;
+    border-radius: 8px;
+    padding: 1em;
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+    max-width: 550px;
+    min-width: 300px;
+    font-size: 1em;
+    position: absolute;
+    bottom: 3.5em;
+    right: 0;
+    z-index: 1001;
+}
+
+input[type="text"] {
+    width: 16em;
+    max-width: 100%;
 }
 
 input:-webkit-autofill,
