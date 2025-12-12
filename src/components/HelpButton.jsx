@@ -12,10 +12,22 @@ export default function HelpButton() {
             <button className="help-button">?</button>
             {hovered && (
                 <div className="help-popup">
-                    Welcome to My Planner! Use the tabs above to switch between
-                    your To-Do list, Assignments, and Calendar. Try color coding 
-                    your assignments by their course title! Add your tasks
-                    and assignments, and see them organized in your Calendar!
+                    <p>Welcome to My Planner!</p>
+                    <br />
+
+                    <p>
+                        Use the tabs above to switch between your To-Do list,
+                        Assignments, and Calendar. Try adding, editing, or
+                        deleting your to-dos and assignments in their
+                        corresponding tabs, and color-code your assignments by
+                        their course title with custom colors!{" "}
+                    </p>
+                    <br />
+
+                    <p>
+                        Enjoy seeing the satisfying results organized nicely in
+                        the calendar tab!
+                    </p>
                 </div>
             )}
         </div>
