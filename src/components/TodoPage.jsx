@@ -9,7 +9,10 @@ export default function TodoPage({ todos, setTodos }) {
     const handleAddTodo = () => {
         if (!input.trim()) return;
 
-        setTodos([...todos, { text: input, date: date || null }]);
+        setTodos([
+            ...todos,
+            { id: Date.now(), text: input, date: date || null },
+        ]);
         setInput("");
         setDate("");
         setShowDateInput(false);
@@ -85,21 +88,21 @@ export default function TodoPage({ todos, setTodos }) {
 
                 <hr />
 
-                {todos.map((todo, index) => (
+                {todos.map((todo) => (
                     <TodoItem
-                        key={index}
+                        key={todo.id}
                         todo={todo}
                         onEdit={(newText, newDate) => {
-                            const updated = [...todos];
-                            updated[index] = {
-                                ...todo,
-                                text: newText,
-                                date: newDate,
-                            };
-                            setTodos(updated);
+                            setTodos(
+                                todos.map((t) =>
+                                    t.id === todo.id
+                                        ? { ...t, text: newText, date: newDate }
+                                        : t
+                                )
+                            );
                         }}
                         onDelete={() => {
-                            setTodos(todos.filter((_, i) => i !== index));
+                            setTodos(todos.filter((t) => t.id !== todo.id));
                         }}
                     />
                 ))}

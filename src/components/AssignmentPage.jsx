@@ -18,7 +18,7 @@ export default function AssignmentPage({
         if (!name || !posted || !due) return;
         setAssignments([
             ...assignments,
-            { name, posted, due, course: selectedCourse },
+            { id: Date.now(), name, posted, due, course: selectedCourse },
         ]);
         setName("");
         setPosted("");
@@ -83,19 +83,21 @@ export default function AssignmentPage({
             <hr />
 
             <ul>
-                {assignments.map((a, i) => (
+                {assignments.map((a) => (
                     <AssignmentItem
-                        key={i}
+                        key={a.id}
                         assignment={a}
                         courses={courses}
                         onEdit={(updatedAssignment) => {
-                            const updated = [...assignments];
-                            updated[i] = updatedAssignment;
-                            setAssignments(updated);
+                            setAssignments(
+                                assignments.map((item) =>
+                                    item.id === a.id ? updatedAssignment : item
+                                )
+                            );
                         }}
                         onDelete={() =>
                             setAssignments(
-                                assignments.filter((_, idx) => idx !== i)
+                                assignments.filter((item) => item.id !== a.id)
                             )
                         }
                     />
