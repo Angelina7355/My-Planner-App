@@ -53,6 +53,7 @@ export default function AssignmentItem({
                             <input
                                 type="date"
                                 value={editDue}
+                                min={editPosted || undefined}
                                 onChange={(e) => setEditDue(e.target.value)}
                             />
                             <select
@@ -79,6 +80,14 @@ export default function AssignmentItem({
                             <button
                                 onClick={handleSave}
                                 className="assignment-btn"
+                                disabled={
+                                    !editName.trim() ||
+                                    !editPosted.trim() ||
+                                    !editDue.trim() ||
+                                    (editPosted &&
+                                        editDue &&
+                                        editDue < editPosted)
+                                }
                             >
                                 Save
                             </button>
