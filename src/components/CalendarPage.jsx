@@ -10,10 +10,11 @@ export default function CalendarPage({ todos, assignments = [], courses }) {
     const todoEvents = todos
         .filter((todo) => todo.date)
         .map((todo) => ({
-            title: todo.text,
+            title: `✔ ${todo.text}`,
             start: todo.date,
             allDay: true,
             color: "#97acc4",
+            className: "todo-event",
         }));
 
     // Get color corresponding to an assignment's course
@@ -28,8 +29,8 @@ export default function CalendarPage({ todos, assignments = [], courses }) {
         start: assignment.posted,
         end: assignment.due,
         allDay: true,
-        color: getCourseColor(assignment),
-        display: "background",
+        color: getCourseColor(assignment) || "#97c4b6",
+        className: "assignment-event",
     }));
 
     const fetchHolidayAPI = (year) => {
@@ -49,6 +50,7 @@ export default function CalendarPage({ todos, assignments = [], courses }) {
                                 title: holiday.localName,
                                 start: holiday.date,
                                 color: "#dc9d93",
+                                className: "holiday-event",
                             });
                             goodFridayPrinted = true;
                         }
@@ -58,6 +60,7 @@ export default function CalendarPage({ todos, assignments = [], courses }) {
                                 title: holiday.localName,
                                 start: holiday.date,
                                 color: "#dc9d93",
+                                className: "holiday-event",
                             });
                             christmasPrinted = true;
                         }
@@ -66,6 +69,7 @@ export default function CalendarPage({ todos, assignments = [], courses }) {
                             title: holiday.localName,
                             start: holiday.date,
                             color: "#dc9d93",
+                            className: "holiday-event",
                         });
                     }
                 });

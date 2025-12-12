@@ -354,3 +354,27 @@ textarea:-webkit-autofill {
     -webkit-text-fill-color: none;
     transition: background-color 5000s ease-in-out 0s;
 }
+
+.assignment-event {
+    padding-top: 0.3em;
+}
+
+.todo-event .fc-event-title {
+    font-size: 1.2em;
+    margin: 0.63em;
+}
+
+.holiday-event .fc-event-title {
+    text-decoration: underline !important;
+    font-weight: bold;
+    margin: 0.5em;
+    font-size: 1.2em;
+}
+
+.fc-event-title,
+.fc-event-main {
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    margin: 0 0.5em 0 0.5em;
+}
