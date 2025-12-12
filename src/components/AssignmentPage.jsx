@@ -57,6 +57,7 @@ export default function AssignmentPage({
             <input
                 type="date"
                 value={due}
+                min={posted || undefined} // Prevents selecting a due date before posted
                 onChange={(e) => setDue(e.target.value)}
             />
 
@@ -75,7 +76,12 @@ export default function AssignmentPage({
 
             <button
                 className="add-assignment"
-                disabled={!name.trim() || !posted.trim() || !due.trim()}
+                disabled={
+                    !name.trim() ||
+                    !posted.trim() ||
+                    !due.trim() ||
+                    (posted && due && due < posted) // Ensure due date comes after posted date
+                }
                 onClick={handleAssignmentAdd}
             >
                 Add Assignment
