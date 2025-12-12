@@ -96,7 +96,7 @@ textarea {
     color: var(--to-do-text);
     line-height: 2em;
     outline: none;
-    padding-right: 5em;
+    padding-right: 1em;
 }
 
 li {
@@ -157,6 +157,25 @@ li.to-do > .edit-todo-btn {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.assignment-info {
+    display: flex;
+    align-items: center;
+    gap: 1em; /* space between name and date */
+}
+
+.assignment-edit-row input,
+.assignment-edit-row select {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.assignment-edit-row input[type="date"] {
+    width: 10em; /* or larger, adjust as needed */
+    font-size: 0.9em; /* make text more readable */
+    margin-left: 0.5em;
+    padding-right: 2.5em; /* ensure space for the icon */
 }
 
 hr {
@@ -378,8 +397,8 @@ ul.course-list {
 }
 
 input[type="text"] {
-    width: 16em;
-    max-width: 100%;
+    width: 14em;
+    max-width: 50%;
 }
 
 input:-webkit-autofill,
