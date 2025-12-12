@@ -31,6 +31,11 @@ export default function AssignmentPage({
         setSelectedCourse("");
     };
 
+    function getCourseColor(assignment) {
+        const courseObj = courses.find((c) => c.name === assignment.course);
+        return courseObj ? courseObj.color : undefined;
+    }
+
     return (
         <div id="assignment-page">
             <h2>Assignments</h2>
@@ -92,7 +97,12 @@ export default function AssignmentPage({
                     <li className="items" key={i}>
                         <p>
                             {a.name}
-                            {a.course && ` (${a.course})`}:
+                            {a.course && (
+                                <span style={{ color: getCourseColor(a) }}>
+                                    {` (${a.course})`}
+                                </span>
+                            )}
+                            :
                         </p>
                         <p className="date">
                             {formatDate(a.posted)} → {formatDate(a.due)}

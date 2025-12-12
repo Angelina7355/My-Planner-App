@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 
-export default function CalendarPage({ todos, assignments = [] }) {
+export default function CalendarPage({ todos, assignments = [], courses }) {
     const [holidayEvents, setHolidayEvents] = useState([]);
     const [loadedHolidayYears, setLoadedHolidayYears] = useState([]);
 
@@ -16,13 +16,19 @@ export default function CalendarPage({ todos, assignments = [] }) {
             color: "#97acc4",
         }));
 
+    // Get color corresponding to an assignment's course
+    function getCourseColor(assignment) {
+        const courseObj = courses.find((c) => c.name === assignment.course);
+        return courseObj ? courseObj.color : undefined;
+    }
+
     // Add assignments to calendar
     const assignmentEvents = assignments.map((assignment) => ({
         title: assignment.name,
         start: assignment.posted,
         end: assignment.due,
         allDay: true,
-        color: "#97c4b6",
+        color: getCourseColor(assignment),
         display: "background",
     }));
 

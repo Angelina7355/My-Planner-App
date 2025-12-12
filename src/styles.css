@@ -9,6 +9,7 @@
     --calendar-background: #dc9d93;
     --to-do-text: #3c4750;
     --to-do-date-text: #5d6d7b;
+    --default-course-color: #609282;
 }
 
 * {
@@ -254,16 +255,9 @@ ul.course-list {
     margin-left: 0;
 }
 
-/* .course-input-row {
-    display: flex;
-    gap: 0.5em;
-    margin-bottom: 1em;
-} */
-
-/* .course-input {
-    flex: 1;
-    min-width: 8em;
-} */
+.color-tag {
+    color: var(--to-do-date-text);
+}
 
 .course-color-picker {
     width: 2em;
@@ -277,7 +271,8 @@ ul.course-list {
     appearance: none;
     -webkit-appearance: none;
     padding: 0;
-    margin-right: 0.5em;
+    margin-right: 1em;
+    margin-left: 0.5em;
 }
 
 .course-list {

@@ -72,7 +72,11 @@ function App() {
                 )}
 
                 {activeTab === "calendar" && (
-                    <CalendarPage todos={todos} assignments={assignments} />
+                    <CalendarPage
+                        todos={todos}
+                        assignments={assignments}
+                        courses={courses}
+                    />
                 )}
             </main>
             <HelpButton />

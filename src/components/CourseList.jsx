@@ -2,14 +2,13 @@ import React, { useState } from "react";
 
 export default function CourseList({ courses, setCourses }) {
     const [input, setInput] = useState("");
-    const [color, setColor] = useState("#a168f7");
+    const [color, setColor] = useState("#609282");
 
     const handleAddCourse = () => {
         const trimmed = input.trim();
         if (trimmed && !courses.some((c) => c.name === trimmed)) {
             setCourses([...courses, { name: trimmed, color }]);
             setInput("");
-            setColor("#a168f7");
         }
     };
 
@@ -38,6 +37,7 @@ export default function CourseList({ courses, setCourses }) {
                     onKeyDown={(e) => e.key === "Enter" && handleAddCourse()}
                     className="course-input"
                 />
+                <span className="color-tag">Color Tag:</span>
                 <input
                     type="color"
                     value={color}
