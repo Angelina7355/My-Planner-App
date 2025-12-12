@@ -18,26 +18,31 @@ export default function TodoItem({ todo, onEdit, onDelete }) {
 
     if (editing) {
         return (
-            <li className="to-do editing">
-                <div className="to-do-info">
-                    <input
-                        type="text"
-                        value={editText}
-                        onChange={(e) => setEditText(e.target.value)}
-                    />
-                </div>
+            <>
+                <li className="to-do editing">
+                    <div className="to-do-info">
+                        <input
+                            type="text"
+                            value={editText}
+                            onChange={(e) => setEditText(e.target.value)}
+                        />
+                    </div>
 
-                <div className="edit-btns-container">
-                    <input
-                        type="date"
-                        value={editDate}
-                        onChange={(e) => setEditDate(e.target.value)}
-                    />
-                    <button onClick={onDelete}>Delete</button>
-                    <button onClick={handleSave}>Save</button>
-                    <button onClick={() => setEditing(false)}>Cancel</button>
-                </div>
-            </li>
+                    <div className="edit-btns-container">
+                        <input
+                            type="date"
+                            value={editDate}
+                            onChange={(e) => setEditDate(e.target.value)}
+                        />
+                        <button onClick={onDelete}>Delete</button>
+                        <button onClick={handleSave}>Save</button>
+                        <button onClick={() => setEditing(false)}>
+                            Cancel
+                        </button>
+                    </div>
+                </li>
+                <hr />
+            </>
         );
     }
 

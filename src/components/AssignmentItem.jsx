@@ -36,54 +36,63 @@ export default function AssignmentItem({
 
     if (editing) {
         return (
-            <li className="items editing">
-                <div className="assignment-edit-row">
-                    <input
-                        type="text"
-                        value={editName}
-                        onChange={(e) => setEditName(e.target.value)}
-                    />
-                    <div className="edit-btns-container">
+            <>
+                <li className="items editing">
+                    <div className="assignment-edit-row">
                         <input
-                            type="date"
-                            value={editPosted}
-                            onChange={(e) => setEditPosted(e.target.value)}
+                            type="text"
+                            value={editName}
+                            onChange={(e) => setEditName(e.target.value)}
                         />
-                        <input
-                            type="date"
-                            value={editDue}
-                            onChange={(e) => setEditDue(e.target.value)}
-                        />
-                        <select
-                            value={editCourse}
-                            onChange={(e) => setEditCourse(e.target.value)}
-                            className="assignment"
-                        >
-                            <option value="" className="assignment-btn">
-                                Select Course
-                            </option>
-                            {courses.map((course, idx) => (
-                                <option key={idx} value={course.name}>
-                                    {course.name}
+                        <div className="edit-btns-container">
+                            <input
+                                type="date"
+                                value={editPosted}
+                                onChange={(e) => setEditPosted(e.target.value)}
+                            />
+                            <input
+                                type="date"
+                                value={editDue}
+                                onChange={(e) => setEditDue(e.target.value)}
+                            />
+                            <select
+                                value={editCourse}
+                                onChange={(e) => setEditCourse(e.target.value)}
+                                className="assignment"
+                            >
+                                <option value="" className="assignment-btn">
+                                    Select Course
                                 </option>
-                            ))}
-                        </select>
+                                {courses.map((course, idx) => (
+                                    <option key={idx} value={course.name}>
+                                        {course.name}
+                                    </option>
+                                ))}
+                            </select>
 
-                        <button onClick={onDelete} className="assignment-btn">
-                            Delete
-                        </button>
-                        <button onClick={handleSave} className="assignment-btn">
-                            Save
-                        </button>
-                        <button
-                            onClick={() => setEditing(false)}
-                            className="assignment-btn"
-                        >
-                            Cancel
-                        </button>
+                            <button
+                                onClick={onDelete}
+                                className="assignment-btn"
+                            >
+                                Delete
+                            </button>
+                            <button
+                                onClick={handleSave}
+                                className="assignment-btn"
+                            >
+                                Save
+                            </button>
+                            <button
+                                onClick={() => setEditing(false)}
+                                className="assignment-btn"
+                            >
+                                Cancel
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+                <hr />
+            </>
         );
     }
 
