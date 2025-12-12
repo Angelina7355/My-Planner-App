@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ProfilePage from "./components/ProfilePage";
 import TodoPage from "./components/TodoPage";
 import AssignmentPage from "./components/AssignmentPage";
 import CalendarPage from "./components/CalendarPage";
@@ -11,6 +12,7 @@ function App() {
     const [todos, setTodos] = useState([]);
     const [assignments, setAssignments] = useState([]);
     const [courses, setCourses] = useState([]);
+    const [userName, setUserName] = useState("");
 
     const tabBackgrounds = {
         todo: "var(--to-do-background)",
@@ -22,10 +24,17 @@ function App() {
         <>
             <header>
                 <span id="title">
-                    <h1>My Planner</h1>
+                    <h1>{userName ? `${userName}'s Planner` : "My Planner"}</h1>
                 </span>
 
                 <nav>
+                    <button
+                        className="tab"
+                        id="profile-tab"
+                        onClick={() => setActiveTab("profile")}
+                    >
+                        Profile
+                    </button>
                     <button
                         className="tab"
                         id="to-do-tab"
@@ -55,7 +64,8 @@ function App() {
             <main
                 style={{
                     backgroundColor:
-                        tabBackgrounds[activeTab] || "var(--to-do-background)",
+                        tabBackgrounds[activeTab] ||
+                        "var(--profile-background)",
                 }}
             >
                 {activeTab === "todo" && (
@@ -76,6 +86,12 @@ function App() {
                         todos={todos}
                         assignments={assignments}
                         courses={courses}
+                    />
+                )}
+                {activeTab === "profile" && (
+                    <ProfilePage
+                        userName={userName}
+                        setUserName={setUserName}
                     />
                 )}
             </main>
