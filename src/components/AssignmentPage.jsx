@@ -93,6 +93,11 @@ export default function AssignmentPage({
                             updated[i] = updatedAssignment;
                             setAssignments(updated);
                         }}
+                        onDelete={() =>
+                            setAssignments(
+                                assignments.filter((_, idx) => idx !== i)
+                            )
+                        }
                     />
                 ))}
             </ul>

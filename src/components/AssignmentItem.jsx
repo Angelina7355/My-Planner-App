@@ -6,7 +6,12 @@ function formatDate(dateStr) {
     return `${month}/${day}/${year}`;
 }
 
-export default function AssignmentItem({ assignment, courses, onEdit }) {
+export default function AssignmentItem({
+    assignment,
+    courses,
+    onEdit,
+    onDelete,
+}) {
     const [editing, setEditing] = useState(false);
     const [editName, setEditName] = useState(assignment.name);
     const [editPosted, setEditPosted] = useState(assignment.posted);
@@ -64,6 +69,9 @@ export default function AssignmentItem({ assignment, courses, onEdit }) {
                             ))}
                         </select>
 
+                        <button onClick={onDelete} className="assignment-btn">
+                            Delete
+                        </button>
                         <button onClick={handleSave} className="assignment-btn">
                             Save
                         </button>

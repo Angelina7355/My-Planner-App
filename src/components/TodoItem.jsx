@@ -33,9 +33,9 @@ export default function TodoItem({ todo, onEdit, onDelete }) {
                         value={editDate}
                         onChange={(e) => setEditDate(e.target.value)}
                     />
+                    <button onClick={onDelete}>Delete</button>
                     <button onClick={handleSave}>Save</button>
                     <button onClick={() => setEditing(false)}>Cancel</button>
-                    <button onClick={onDelete}>Delete</button>
                 </div>
             </li>
         );
